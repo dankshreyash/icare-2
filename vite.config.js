@@ -78,4 +78,33 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     contactApiDevPlugin()
   ],
+  build: {
+    target: 'es2020',
+    cssMinify: true,
+    chunkSizeWarningLimit: 600,
+    modulePreload: {
+      polyfill: true
+    },
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-router') || id.includes('react-dom') || id.includes('react/')) {
+              return 'vendor-react';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-framer';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons';
+            }
+            if (id.includes('react-helmet-async')) {
+              return 'vendor-helmet';
+            }
+            return 'vendor-other';
+          }
+        }
+      }
+    }
+  }
 })

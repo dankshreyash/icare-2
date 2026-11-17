@@ -52,11 +52,19 @@ export default function Navbar() {
             className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg group py-1 shrink-0"
             aria-label="ICARE Home"
           >
-            <img
-              src="/icare-logo.png"
-              alt="ICARE — Indian Centre for Academic Rankings & Excellence"
-              className="h-9 sm:h-10 lg:h-11 w-auto object-contain dark:brightness-0 dark:invert transition-all duration-200 group-hover:opacity-90"
-            />
+            <picture>
+              <source type="image/webp" srcSet="/icare-logo.webp" />
+              <img
+                src="/icare-logo.png"
+                alt="ICARE — Indian Centre for Academic Rankings & Excellence"
+                width="860"
+                height="290"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                className="h-9 sm:h-10 lg:h-11 w-auto object-contain dark:brightness-0 dark:invert transition-all duration-200 group-hover:opacity-90"
+              />
+            </picture>
           </Link>
 
           {/* Desktop Navigation Links — All options visible on big screens (lg and up) */}

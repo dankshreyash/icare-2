@@ -33,11 +33,18 @@ export default function Footer() {
           {/* Col 1: Brand & Logo from images folder (4 cols) */}
           <div className="lg:col-span-4">
             <Link to="/" className="inline-block group" aria-label="ICARE Home">
-              <img
-                src="/icare-logo.png"
-                alt="ICARE — Indian Centre for Academic Rankings & Excellence"
-                className="h-10 sm:h-12 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity"
-              />
+              <picture>
+                <source type="image/webp" srcSet="/icare-logo.webp" />
+                <img
+                  src="/icare-logo.png"
+                  alt="ICARE — Indian Centre for Academic Rankings & Excellence"
+                  width="860"
+                  height="290"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-10 sm:h-12 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity"
+                />
+              </picture>
             </Link>
 
             <p className="mt-4 text-sm text-slate-400 leading-relaxed">

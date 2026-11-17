@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './context/ThemeContext';
@@ -6,16 +6,17 @@ import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+import PageLoader from './components/PageLoader';
 
-// Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import WhatWeDo from './pages/WhatWeDo';
-import TrackRecord from './pages/TrackRecord';
-import ToolsAndInitiatives from './pages/ToolsAndInitiatives';
-import LeadershipAndTeam from './pages/LeadershipAndTeam';
-import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
+// Dynamic route-level code splitting
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const WhatWeDo = lazy(() => import('./pages/WhatWeDo'));
+const TrackRecord = lazy(() => import('./pages/TrackRecord'));
+const ToolsAndInitiatives = lazy(() => import('./pages/ToolsAndInitiatives'));
+const LeadershipAndTeam = lazy(() => import('./pages/LeadershipAndTeam'));
+const Contact = lazy(() => import('./pages/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
@@ -35,34 +36,36 @@ function App() {
             <Navbar />
             <main id="main-content" tabIndex="-1" className="flex-1 focus:outline-none">
               <ErrorBoundary>
-                <Routes>
-                  {/* Canonical Core Routes */}
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/what-we-do" element={<WhatWeDo />} />
-                  <Route path="/track-record" element={<TrackRecord />} />
-                  <Route path="/tools-and-initiatives" element={<ToolsAndInitiatives />} />
-                  <Route path="/leadership-and-team" element={<LeadershipAndTeam />} />
-                  <Route path="/contact" element={<Contact />} />
+                <Suspense fallback={<PageLoader />}>
+                  <Routes>
+                    {/* Canonical Core Routes */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/what-we-do" element={<WhatWeDo />} />
+                    <Route path="/track-record" element={<TrackRecord />} />
+                    <Route path="/tools-and-initiatives" element={<ToolsAndInitiatives />} />
+                    <Route path="/leadership-and-team" element={<LeadershipAndTeam />} />
+                    <Route path="/contact" element={<Contact />} />
 
-                  {/* Legacy Redirects from Old Static HTML URLs */}
-                  <Route path="/about.html" element={<Navigate to="/about" replace />} />
-                  <Route path="/services" element={<Navigate to="/what-we-do" replace />} />
-                  <Route path="/services.html" element={<Navigate to="/what-we-do" replace />} />
-                  <Route path="/evolution" element={<Navigate to="/about" replace />} />
-                  <Route path="/evolution.html" element={<Navigate to="/about" replace />} />
-                  <Route path="/network" element={<Navigate to="/track-record" replace />} />
-                  <Route path="/network.html" element={<Navigate to="/track-record" replace />} />
-                  <Route path="/gsirf" element={<Navigate to="/track-record" replace />} />
-                  <Route path="/gsirf.html" element={<Navigate to="/track-record" replace />} />
-                  <Route path="/contact.html" element={<Navigate to="/contact" replace />} />
-                  <Route path="/tools" element={<Navigate to="/tools-and-initiatives" replace />} />
-                  <Route path="/team" element={<Navigate to="/leadership-and-team" replace />} />
-                  <Route path="/leadership" element={<Navigate to="/leadership-and-team" replace />} />
+                    {/* Legacy Redirects from Old Static HTML URLs */}
+                    <Route path="/about.html" element={<Navigate to="/about" replace />} />
+                    <Route path="/services" element={<Navigate to="/what-we-do" replace />} />
+                    <Route path="/services.html" element={<Navigate to="/what-we-do" replace />} />
+                    <Route path="/evolution" element={<Navigate to="/about" replace />} />
+                    <Route path="/evolution.html" element={<Navigate to="/about" replace />} />
+                    <Route path="/network" element={<Navigate to="/track-record" replace />} />
+                    <Route path="/network.html" element={<Navigate to="/track-record" replace />} />
+                    <Route path="/gsirf" element={<Navigate to="/track-record" replace />} />
+                    <Route path="/gsirf.html" element={<Navigate to="/track-record" replace />} />
+                    <Route path="/contact.html" element={<Navigate to="/contact" replace />} />
+                    <Route path="/tools" element={<Navigate to="/tools-and-initiatives" replace />} />
+                    <Route path="/team" element={<Navigate to="/leadership-and-team" replace />} />
+                    <Route path="/leadership" element={<Navigate to="/leadership-and-team" replace />} />
 
-                  {/* 404 Catch-All */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+                    {/* 404 Catch-All */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
               </ErrorBoundary>
             </main>
             <Footer />

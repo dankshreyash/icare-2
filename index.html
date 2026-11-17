@@ -28,9 +28,11 @@
     <meta name="twitter:image" content="https://icare-india.org/icare-logo.png" />
 
     <!-- Performance & Core Web Vitals: Preload LCP Logo Image -->
-    <link rel="preload" href="/icare-logo.png" as="image" type="image/png" />
+    <link rel="preload" href="/icare-logo.webp" as="image" type="image/webp" fetchpriority="high" />
 
     <!-- Google Fonts: Playfair Display + Inter (Preconnected with font-display: swap) -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />

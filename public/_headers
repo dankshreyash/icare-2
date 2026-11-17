@@ -1,0 +1,36 @@
+# Caching & Performance Headers
+
+# Static hashed assets: Immutable 1-year cache
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images & Media
+/*.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.png
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.jpg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.svg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.ico
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# SEO Metadata
+/robots.txt
+  Cache-Control: public, max-age=86400, stale-while-revalidate=86400
+/sitemap.xml
+  Cache-Control: public, max-age=86400, stale-while-revalidate=86400
+
+# HTML Documents: Must revalidate for immediate deployments
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# API Endpoints
+/api/*
+  Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate
