@@ -1,0 +1,17 @@
+# 301 Redirects from old static HTML routes to new canonical routes
+/about.html             /about                  301
+/services.html          /what-we-do             301
+/services               /what-we-do             301
+/evolution.html         /about                  301
+/evolution              /about                  301
+/network.html           /track-record           301
+/network                /track-record           301
+/gsirf.html             /track-record           301
+/gsirf                  /track-record           301
+/contact.html           /contact                301
+/tools                  /tools-and-initiatives  301
+/team                   /leadership-and-team    301
+/leadership             /leadership-and-team    301
+
+# SPA fallback
+/*                      /index.html             200

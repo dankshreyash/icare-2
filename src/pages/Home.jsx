@@ -35,11 +35,49 @@ const iconMap = {
 };
 
 export default function Home() {
+  const homeSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: siteMetadata.fullName,
+      image: `${siteMetadata.portalUrl}/icare-logo.png`,
+      '@id': `${siteMetadata.portalUrl}/#localbusiness`,
+      url: siteMetadata.portalUrl,
+      telephone: siteMetadata.phone,
+      email: siteMetadata.email,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Chennai',
+        addressRegion: 'Tamil Nadu',
+        addressCountry: 'IN'
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 13.0827,
+        longitude: 80.2707
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:30',
+        closes: '18:00'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: siteMetadata.name,
+      url: siteMetadata.portalUrl,
+      description: siteMetadata.heroSubline
+    }
+  ];
+
   return (
     <>
       <SEO
         title="Institutional Quality Assessment & Academic Ranking Frameworks"
         description={siteMetadata.heroSubline}
+        schema={homeSchema}
       />
 
       {/* 1. HERO SECTION */}

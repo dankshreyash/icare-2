@@ -3,7 +3,7 @@ import {
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
-import { toolsAndInitiatives } from '../data/content';
+import { toolsAndInitiatives, siteMetadata } from '../data/content';
 import Section from '../components/Section';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
@@ -14,11 +14,74 @@ import SimulatorDemo from '../components/SimulatorDemo';
 export default function ToolsAndInitiatives() {
   const otherTools = toolsAndInitiatives.filter((t) => t.id !== 'ai-simulator');
 
+  const toolsSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'ICARE AI-Based Institutional Ranking Simulator',
+      description: 'A what-if scenario testing simulation engine built on public NIRF data to forecast institutional score sensitivity and rank movement.',
+      brand: {
+        '@type': 'Brand',
+        name: siteMetadata.name
+      },
+      category: 'Educational Software / Institutional Analytics'
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How does the ICARE AI-Based Ranking Simulator calculate rank movements?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The simulator models sensitivity curves on public NIRF data parameters, evaluating how changes in research publication volume, field-weighted citations, and patent grants impact RPC (Research and Professional Practice) score percentiles.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the purpose of the TRUTH Index?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The TRUTH Index tracks research paper retractions and identifies questionable or predatory publication pipelines, safeguarding universities against reputational damage and promoting verifiable academic integrity.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What does the Global Rankings Outreach Group do?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Being set up at IIT Madras in talks with the Ministry of Education, the Global Rankings Outreach Group brings Indian institutions together to collectively elevate global academic and employer reputation on QS and THE world ranking tables.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteMetadata.portalUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Tools & Initiatives',
+          item: `${siteMetadata.portalUrl}/tools-and-initiatives`
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SEO
         title="Tools & Initiatives | AI Simulator, TRUTH Index, Stanford Top-2%"
         description="Explore ICARE's proprietary analytical instruments: Interactive AI-based ranking simulator, institutional benchmarking tools, the TRUTH Index, Stanford top-2% scientists tracking, and the Global Rankings Outreach Group."
+        schema={toolsSchema}
       />
 
       {/* Header */}

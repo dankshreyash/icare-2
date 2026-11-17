@@ -5,7 +5,8 @@ import {
 import { 
   leadershipMembers, 
   embeddedAnalysts, 
-  technologyTeam 
+  technologyTeam,
+  siteMetadata
 } from '../data/content';
 import Section from '../components/Section';
 import SectionHeading from '../components/SectionHeading';
@@ -17,11 +18,51 @@ import SEO from '../components/SEO';
 export default function LeadershipAndTeam() {
   const [selectedLeader, setSelectedLeader] = useState(null);
 
+  const teamSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'ICARE Leadership Council & Key Contributors',
+      itemListElement: leadershipMembers.map((member, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        item: {
+          '@type': 'Person',
+          name: member.name,
+          jobTitle: member.role,
+          worksFor: {
+            '@type': 'Organization',
+            name: siteMetadata.fullName
+          }
+        }
+      }))
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteMetadata.portalUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Leadership & Team',
+          item: `${siteMetadata.portalUrl}/leadership-and-team`
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SEO
         title="Leadership & Institutional Team"
         description="Meet the leadership council, embedded university data analysts deployed across Maharashtra state universities, and the technology engineering team at ICARE."
+        schema={teamSchema}
       />
 
       {/* Header */}

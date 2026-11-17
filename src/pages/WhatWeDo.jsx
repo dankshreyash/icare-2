@@ -10,7 +10,7 @@ import {
   ArrowRight,
   Check
 } from 'lucide-react';
-import { services } from '../data/content';
+import { services, siteMetadata } from '../data/content';
 import Section from '../components/Section';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
@@ -28,11 +28,52 @@ const iconMap = {
 };
 
 export default function WhatWeDo() {
+  const servicesSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'ICARE Institutional Practice Areas & Services',
+      itemListElement: services.map((s, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        item: {
+          '@type': 'Service',
+          name: s.title,
+          description: s.shortDescription,
+          provider: {
+            '@type': 'Organization',
+            name: siteMetadata.fullName,
+            url: siteMetadata.portalUrl
+          }
+        }
+      }))
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteMetadata.portalUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'What We Do',
+          item: `${siteMetadata.portalUrl}/what-we-do`
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SEO
         title="What We Do | 7 Institutional Advisory & Ranking Practice Areas"
         description="Explore ICARE's 7 core services: ranking frameworks conception, accreditation & DVV data validation, civil-service capacity building, institutional analytics, rankings support, policy, and publications."
+        schema={servicesSchema}
       />
 
       {/* Header */}

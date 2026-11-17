@@ -8,12 +8,57 @@ import {
   AlertCircle, 
   Clock
 } from 'lucide-react';
-import { contactInfo } from '../data/content';
+import { contactInfo, siteMetadata } from '../data/content';
 import Section from '../components/Section';
 import Button from '../components/Button';
 import SEO from '../components/SEO';
 
 export default function Contact() {
+  const contactSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: 'Contact ICARE Institutional Advisory',
+      url: `${siteMetadata.portalUrl}/contact`,
+      mainEntity: {
+        '@type': 'LocalBusiness',
+        name: siteMetadata.fullName,
+        telephone: siteMetadata.phone,
+        email: siteMetadata.email,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'ICARE Headquarters',
+          addressLocality: 'Chennai',
+          addressRegion: 'Tamil Nadu',
+          addressCountry: 'IN'
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 13.0827,
+          longitude: 80.2707
+        }
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteMetadata.portalUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Contact',
+          item: `${siteMetadata.portalUrl}/contact`
+        }
+      ]
+    }
+  ];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -95,6 +140,7 @@ export default function Contact() {
       <SEO
         title="Contact & Institutional Inquiries"
         description="Initiate an institutional consultation with ICARE regarding state rating frameworks, NIRF acceleration, NAAC SSR audits, or embedded analyst deployment."
+        schema={contactSchema}
       />
 
       {/* Header */}

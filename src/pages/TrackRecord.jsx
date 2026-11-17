@@ -7,7 +7,7 @@ import {
   Landmark, 
   GraduationCap 
 } from 'lucide-react';
-import { trackRecordData } from '../data/content';
+import { trackRecordData, siteMetadata } from '../data/content';
 import Section from '../components/Section';
 import Card from '../components/Card';
 import Button from '../components/Button';
@@ -16,11 +16,33 @@ import SEO from '../components/SEO';
 export default function TrackRecord() {
   const [activeTab, setActiveTab] = useState('national');
 
+  const trackRecordSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteMetadata.portalUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Track Record',
+          item: `${siteMetadata.portalUrl}/track-record`
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SEO
         title="Track Record & Institutional Precedents"
         description="Review ICARE's national mandates with the Ministry of Education (NIRF), state programmes in Gujarat (GSIRF), Maharashtra (MahaSamarth), Karnataka (KSURF), and premier partners."
+        schema={trackRecordSchema}
       />
 
       {/* Header */}

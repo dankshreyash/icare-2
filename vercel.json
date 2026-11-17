@@ -1,0 +1,20 @@
+{
+  "redirects": [
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/services.html", "destination": "/what-we-do", "permanent": true },
+    { "source": "/services", "destination": "/what-we-do", "permanent": true },
+    { "source": "/evolution.html", "destination": "/about", "permanent": true },
+    { "source": "/evolution", "destination": "/about", "permanent": true },
+    { "source": "/network.html", "destination": "/track-record", "permanent": true },
+    { "source": "/network", "destination": "/track-record", "permanent": true },
+    { "source": "/gsirf.html", "destination": "/track-record", "permanent": true },
+    { "source": "/gsirf", "destination": "/track-record", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/tools", "destination": "/tools-and-initiatives", "permanent": true },
+    { "source": "/team", "destination": "/leadership-and-team", "permanent": true },
+    { "source": "/leadership", "destination": "/leadership-and-team", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

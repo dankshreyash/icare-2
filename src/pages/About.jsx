@@ -6,7 +6,7 @@ import {
   ArrowRight,
   ShieldAlert
 } from 'lucide-react';
-import { aboutContent, ourApproach } from '../data/content';
+import { aboutContent, ourApproach, siteMetadata } from '../data/content';
 import Section from '../components/Section';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
@@ -14,11 +14,55 @@ import Button from '../components/Button';
 import SEO from '../components/SEO';
 
 export default function About() {
+  const aboutSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'The Evolution of Academic Rankings in India: From KSURF to NIRF',
+      description: 'How state-level rating frameworks sparked a national movement for transparent, empirical quality assessment and the creation of NIRF.',
+      author: {
+        '@type': 'Organization',
+        name: siteMetadata.fullName,
+        url: siteMetadata.portalUrl
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: siteMetadata.fullName,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteMetadata.portalUrl}/icare-logo.png`
+        }
+      },
+      datePublished: '2015-09-29',
+      dateModified: '2026-11-17',
+      mainEntityOfPage: `${siteMetadata.portalUrl}/about`
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteMetadata.portalUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'About ICARE',
+          item: `${siteMetadata.portalUrl}/about`
+        }
+      ]
+    }
+  ];
+
   return (
     <>
       <SEO
         title="About ICARE | Evolution from KSURF to NIRF"
         description="Learn the history of ICARE: pioneering India's first state rating framework (KSURF), recommending NIRF, working with PMO, IITs, NAAC, and global ranking agencies."
+        schema={aboutSchema}
       />
 
       {/* Header */}
