@@ -1,0 +1,100 @@
+ICARE( Indian Center for Academic Ranking and Excellence )
+Measuring, benchmarking and improving the quality of higher education in India
+Home
+ICARE (Indian Centre for Academic Rankings & Excellence) works with governments, universities and ranking bodies on institutional ranking, rating, accreditation and data-driven improvement. Our work spans close to two decades, most of it in the last fifteen years.
+ICARE at a glance
+About 20 years: of work in rankings, ratings and accreditation.
+6+ states: with state-level ranking and rating programmes.
+7 universities: in Maharashtra where ICARE analysts are embedded.
+What we are known for
+Recommending and building the National Institutional Ranking Framework (NIRF).
+Accreditation and data validation work with India's national accreditation authority.
+Assessing and accrediting civil-service training institutions for Mission Karmayogi, with the Prime Minister's Office.
+State-level ranking and rating programmes across India.
+Supporting leading public and private universities in national and global rankings.
+Producing the rankings published by major Indian news magazines.
+About ICARE
+ICARE helps Indian higher education understand how well its institutions perform, and what to do next. We began with a state project, the Karnataka State Universities' Rating Framework (KSURF), which later became the National Institutional Ranking Framework (NIRF).
+Since then we have worked with central and state governments, the Prime Minister's Office, leading IITs, large private universities, and the global ranking agencies QS and Times Higher Education, to build frameworks, validate data and turn it into insight that institutions can act on.
+Our approach
+We do not chase rankings. We help institutions do the right things, so that rankings follow as a byproduct. National ranking data is public, so our value lies in analysis: showing an institution where it stands against peers, how far it is from its goals, and which focus areas will move it most.
+Global rankings also depend heavily on academic reputation surveys, which carry about 30% weight in major world rankings. We therefore encourage Indian institutions to support one another's reputation globally while competing at home.
+What we do
+Ranking and rating frameworks: Designing national and state-level frameworks, from KSURF to NIRF, and state programmes that show how institutions perform within a state.
+Accreditation and data validation: Accrediting institutions for the national accreditation authority, and validating and verifying the data they submit.
+Civil-service capacity building: Assessing and accrediting civil-service training institutions under Mission Karmayogi, and developing standards with national training institutions, for the Prime Minister's Office.
+Institutional analytics: Data analysts embedded in universities, building dashboards and insights so effort goes in the right direction and progress is visible over time.
+National and global rankings support: Advising public and private universities on NIRF, QS and Times Higher Education rankings.
+Policy and strategy: Recommending and shaping the Institutions of Eminence initiative, and working on the National Education Policy.
+Ranking publications: Putting together the rankings published by major Indian news magazines.
+Track record
+National mandates
+NIRF: ICARE recommended and built the National Institutional Ranking Framework, which grew out of the Karnataka State Universities' Rating Framework (KSURF).
+Accreditation: Appointed to accredit institutions across the country, and data validation and verification partner of the national accreditation authority (NAAC).
+Institutions of Eminence: Recommended and helped create the initiative, and prepared the presentations through which several institutions earned the Eminence title.
+National Education Policy: Worked closely on the policy, including with the late Dr Kasturirangan.
+Mission Karmayogi: Empanelled by the Prime Minister's Office for the Capacity Building Commission. ICARE assesses and accredits civil-service training institutions across India.
+State programmes
+The model first built in Karnataka became a national model. ICARE has audited, assessed and rated institutions in Gujarat, Tamil Nadu, Maharashtra, Haryana, Kerala and Karnataka, among others, and several state governments have asked us to run state-level ranking and rating programmes.
+Most recently, the Government of Maharashtra appointed ICARE to work with its seven public state universities, including Mumbai and Pune. ICARE data analysts work inside these universities to build dashboards and insights, so progress can be tracked over time.
+Partners
+Advisory to leading institutions: Formal official advisors to IIT Bombay, IIT Delhi, IIT Kanpur and IIT Kharagpur, and to a Bangalore institute. ICARE has traditionally worked with the older IITs on global university rankings.
+Private universities: Support to large private universities, including BITS Pilani, Manipal, VIT, SRM, SASTRA, Amrita and OP Jindal, on national and global ranking efforts.
+Global ranking agencies: Officially engaged by QS and Times Higher Education in their early years in India.
+Media: Works closely with leading Indian news magazines, including Week, Business World and Outlook, whose rankings ICARE puts together.
+Governments: Prime Minister's Office, state governments and the national accreditation authority.
+Tools and initiatives
+AI-based simulators: A what-if tool built on public NIRF data. Enter a change, such as 20 more research papers, and see where it could move an institution.
+Benchmarking tools: Shows the distance between an institution and a peer such as IIT Madras, so leaders can choose their focus areas for the year.
+TRUTH Index: Tracks research retractions to uphold transparency and honesty.
+Stanford top-2% list analysis: ICARE decodes and analyses the widely cited list.
+Global Rankings Outreach Group: Being set up at IIT Madras to bring Indian institutions together on global reputation, in talks with the Ministry of Education.
+Leadership
+Sridhar Subramanyam:
+Dr Karthick Sridhar: Originally responsible for bringing both QS and Times Higher Education to India, working closely with the Prime Minister when he was Chief Minister of Gujarat. Helped recommend and build NIRF. Advisor to IIT Madras. Works on Africa projects, including the Zanzibar campus.
+Dr Kumara Swamy T.R.: ICARE colleague who has worked very closely on the National Education Policy with the late Dr Kasturirangan, and presents ranking-data analysis for institutions.
+Jagan Sridhar: Jagan Sridhar serves as Chief Assessments Officer at ICARE, spearheading institutional intelligence, higher education governance, and quality assurance frameworks across domestic and international educational corridors. Drawing on deep expertise in national assessment exercises under the National Standards for Civil Service Training Institutions (NSCSTI - Mission Karmayogi) and strategic institutional benchmarking, he advises university leadership and governing bodies on bridging policy with student experience to strengthen institutional outcomes across NAAC, NIRF, QS, and global ranking tables. 
+Sribhashyam Akhil: Senior Data Analyst at ICARE. Builds national-scale education analytics platforms for Indian higher education governance, using Power BI, Python, SQL, DAX, Figma and RAG and AI agent architectures. 
+Padmashree: Padma S. serves as Assistant Director of Programme Implementation at ICARE, driving executive project execution, stakeholder coordination, and institutional ranking alignment. With more than eight years of specialized expertise in global higher education rankings at QS Quacquarelli Symonds, she has led public ranking methodology reviews, global data validation pipelines, and complex stakeholder advisory support across World University, Regional, and Subject Rankings. Holding a Master’s degree from the University of Mumbai and possessing multilingual research proficiency, she combines deep knowledge of international academic benchmarking with on-ground operational rigor to streamline data governance and milestone delivery across ICARE’s key institutional frameworks. 
+Kirti: Kirti S. manages Human Resources, operations administration, and desktop assessment frameworks at ICARE, contributing to institutional quality audits and large-scale governance projects including MahaSTRIDE under MITRA. Bringing extensive cross-sector experience spanning banking operations, vendor management, and Management Information Systems (MIS)—including leadership roles as Deputy Manager at HDFC Bank—she ensures rigorous compliance, process standardization, and meticulous documentation. 
+Saagar Teli: Saagar Teli is an Assistant Director of Data Science & Institutional Analytics at ICARE, leading advanced machine learning pipelines, predictive performance modeling, and automated data architectures for state-wide higher education initiatives. Backed by an engineering foundation, enterprise experience at Tata Consultancy Services, and specialization in Artificial Intelligence and Data Science, he focuses on turning raw institutional datasets into actionable executive intelligence. At ICARE, he oversees data governance and analytical pipelines across participating public universities, designing automated dashboards and strategic scorecards that empower institutions to optimize ranking trajectories, track compliance indicators, and build scalable institutional capacity. 
+
+Team Members
+
+1. Atharav Paturkar – Data Analyst
+University: Dr. Babasaheb Ambedkar Marathwada University (BAMU) | Location: Chhatrapati Sambhajinagar
+Atharav works at ICARE in higher education analytics, institutional performance assessment, and data-driven research. He contributes to institutional data analysis, ranking assessments, dashboard development, and benchmarking initiatives, helping identify performance gaps and opportunities for improvement.
+2. Anjali Singh – Data Analyst
+University: Rashtrasant Tukadoji Maharaj Nagpur University (RTMNU) | Location: Nagpur
+Anjali works at ICARE, focusing on higher education analytics, institutional performance assessment, and data-driven research. She specialises in analysing institutional and ranking data, developing analytical dashboards, and supporting benchmarking initiatives to identify performance gaps and institutional improvement opportunities.
+
+
+3. Prathamesh Babhulkar – Data Analyst
+University: Sant Gadge Baba Amravati University (SGBAU) | Location: Amravati
+Prathamesh works with ICARE under the MahaSTRIDE Initiative, coordinating with university stakeholders and supporting institutional data collection, NIRF analysis, performance assessment, and university ranking improvement. He is also actively involved in the Dashboard & Visualization Team, contributing to interactive dashboard development, data visualization, technical solutions, and web-based applications. Skilled in Python, SQL, Power BI, Excel, Flask, and data analytics, he focuses on transforming institutional data into actionable insights and developing technology-driven solutions for higher education.
+4. Nitish Kumbhar – Data Analyst
+University: Kavayitri Bahinabai Chaudhari North Maharashtra University (KBCNMU) | Location: Jalgaon
+Nitish works at ICARE in higher education analytics, institutional performance assessment, and data-driven research. He contributes to institutional data analysis, ranking assessments, analytical dashboards, and benchmarking initiatives, helping transform complex datasets into meaningful insights for institutional improvement.
+5. Vaibhav Ambekar – Data Analyst
+University: COEP Technological University, Pune  (COEP) | Location: Pune
+Vaibhav works at ICARE, contributing to higher education analytics, institutional performance assessment, and data-driven strategic initiatives. His work involves analysing institutional data, developing dashboards and reporting solutions, benchmarking institutional performance, and supporting data management and technical implementation. He works on transforming complex datasets into meaningful insights to support institutional planning, performance monitoring, and informed decision-making. His areas of focus include data analysis, business intelligence, KPI monitoring, process improvement, data visualisation, and analytical reporting.
+
+
+6. Sneha Kashitkar – Data Analyst
+University: Mumbai University (MU) | Location: Mumbai
+Sneha works at ICARE, focusing on higher education analytics, institutional performance assessment, and data-driven research. She contributes to ranking data analysis, analytical reporting, dashboard development, and institutional benchmarking to identify performance gaps and improvement opportunities.
+
+
+
+7. Harsh Shetty – Data Analyst
+University: Savitribai Phule Pune University (SPPU) | Location: Pune
+Harsh works at ICARE, focusing on higher education analytics, institutional data analysis, and performance assessment. He contributes to analytical reporting, dashboard development, institutional benchmarking, and ranking-related data analysis to support university performance improvement.
+
+7. Shreyash Gaikwad – Full Stack AI Engineer.
+Shreyash is a Full Stack AI Engineer skilled in React.js, Node.js, and SQL/NoSQL databases, with expertise in Generative AI, Retrieval-Augmented Generation (RAG), LLMs, LangChain, vector databases (FAISS), embeddings, semantic search, and prompt engineering. He builds scalable, AI-powered web applications and intelligent chatbots that turn organizational data into instant, accurate answers.
+
+
+
+
+
+

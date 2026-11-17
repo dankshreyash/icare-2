@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-navy-950: #060d1a;
+  --color-navy-900: #0a172a;
+  --color-navy-850: #0d1e36;
+  --color-navy-800: #112644;
+  --color-navy-700: #1b3860;
+  --color-navy-600: #264e82;
+  --color-navy-500: #3366a5;
+  --color-navy-100: #e3ecf7;
+  --color-navy-50: #f1f6fc;
+
+  --color-saffron-700: #9a4c00;
+  --color-saffron-600: #b85b02;
+  --color-saffron-500: #d97706;
+  --color-saffron-400: #f59e0b;
+  --color-saffron-300: #fbbf24;
+  --color-saffron-100: #fef3c7;
+  --color-saffron-50: #fffbeb;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-serif);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
+}
