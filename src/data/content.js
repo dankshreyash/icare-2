@@ -21,7 +21,6 @@ export const siteMetadata = {
 };
 
 export const navigationLinks = [
-  { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "What We Do", path: "/what-we-do" },
   { name: "Track Record", path: "/track-record" },

@@ -68,6 +68,14 @@ export default function Footer() {
               Organization
             </h4>
             <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link
+                  to="/"
+                  className="text-slate-400 hover:text-white transition-colors"
+                >
+                  Home
+                </Link>
+              </li>
               {navigationLinks.map((link) => (
                 <li key={link.path}>
                   <Link
