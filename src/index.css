@@ -28,15 +28,46 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
+}
+
+/* Reduced motion preference (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 h1, h2, h3, .font-heading {
   font-family: var(--font-serif);
 }
 
-/* Custom scrollbar */
+/* Cross-browser backdrop filter support for Safari */
+.backdrop-blur-xs {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* WebKit / Chromium scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -47,4 +78,15 @@ h1, h2, h3, .font-heading {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.55);
+}
+
+/* Form input normalizations across Safari / Chrome / Firefox */
+input, textarea, select, button {
+  font-family: inherit;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
 }

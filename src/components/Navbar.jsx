@@ -25,6 +25,17 @@ export default function Navbar() {
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-200 border-b ${
@@ -118,11 +129,12 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
+              aria-label={mobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
               aria-expanded={mobileMenuOpen}
-              className="p-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer border border-slate-200 dark:border-slate-800"
+              aria-controls="mobile-menu-drawer"
+              className="p-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer border border-slate-200 dark:border-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -130,7 +142,7 @@ export default function Navbar() {
 
       {/* Small Device Drawer (Opens when burger is clicked) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top duration-200">
+        <div id="mobile-menu-drawer" className="lg:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top duration-200">
           <nav className="flex flex-col space-y-1" aria-label="Mobile Navigation">
             {navigationLinks.map((link) => (
               <NavLink

@@ -150,7 +150,7 @@ export default function ToolsAndInitiatives() {
                   </span>
                   {tool.capabilities.map((cap, cIdx) => (
                     <div key={cIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" aria-hidden="true" />
                       <span>{cap}</span>
                     </div>
                   ))}

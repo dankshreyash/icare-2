@@ -102,7 +102,7 @@ export default function TeamCard({
           {photoUrl ? (
             <img
               src={photoUrl}
-              alt={name}
+              alt={`Portrait of ${name}`}
               className="w-16 h-16 rounded-xl object-cover border border-slate-200 dark:border-slate-700"
             />
           ) : (

@@ -49,10 +49,11 @@ export default function SimulatorDemo({ embedded = false }) {
           </div>
 
           <button
+            type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 px-3 py-1.5 rounded-md border border-slate-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 px-3 py-1.5 rounded-md border border-slate-700 transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
+            <RefreshCw className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Reset Demo</span>
           </button>
         </div>
@@ -82,8 +83,9 @@ export default function SimulatorDemo({ embedded = false }) {
               max="100"
               step="5"
               value={extraPapers}
+              aria-label="Extra indexed research papers slider"
               onChange={(e) => setExtraPapers(parseInt(e.target.value, 10))}
-              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-600 dark:accent-amber-500"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-600 dark:accent-amber-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             />
             <div className="flex justify-between text-[11px] text-slate-400 mt-1">
               <span>0 baseline</span>
@@ -109,8 +111,9 @@ export default function SimulatorDemo({ embedded = false }) {
               max="3.0"
               step="0.1"
               value={citationsFactor}
+              aria-label="Citation impact factor slider"
               onChange={(e) => setCitationsFactor(parseFloat(e.target.value))}
-              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             />
             <div className="flex justify-between text-[11px] text-slate-400 mt-1">
               <span>1.0x (Standard)</span>
@@ -136,8 +139,9 @@ export default function SimulatorDemo({ embedded = false }) {
               max="15"
               step="1"
               value={patentGrants}
+              aria-label="Granted patents slider"
               onChange={(e) => setPatentGrants(parseInt(e.target.value, 10))}
-              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
             />
             <div className="flex justify-between text-[11px] text-slate-400 mt-1">
               <span>0</span>

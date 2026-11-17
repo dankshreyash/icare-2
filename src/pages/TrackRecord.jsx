@@ -180,7 +180,7 @@ export default function TrackRecord() {
                   <ul className="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
                     {group.entities.map((entity, eIdx) => (
                       <li key={eIdx} className="flex items-start gap-2">
-                        <span className="text-amber-500 font-bold">•</span>
+                        <span className="text-amber-700 dark:text-amber-400 font-bold" aria-hidden="true">•</span>
                         <span>{entity}</span>
                       </li>
                     ))}

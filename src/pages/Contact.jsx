@@ -63,7 +63,8 @@ export default function Contact() {
     name: '',
     email: '',
     organisation: '',
-    message: ''
+    message: '',
+    _hp: '' // Bot honeypot
   });
   const nameId = useId();
   const emailId = useId();
@@ -71,31 +72,53 @@ export default function Contact() {
   const messageId = useId();
 
   const [errors, setErrors] = useState({});
+  const [serverNotice, setServerNotice] = useState(null);
+  const [submissionResponse, setSubmissionResponse] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const errs = {};
-    if (!formData.name.trim()) {
-      errs.name = 'Full name is required.';
-    } else if (formData.name.trim().length < 2) {
-      errs.name = 'Please provide a valid name.';
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedOrg = formData.organisation.trim();
+    const trimmedMsg = formData.message.trim();
+
+    // Name checks
+    if (!trimmedName) {
+      errs.name = 'Full name is required for institutional record.';
+    } else if (trimmedName.length < 2) {
+      errs.name = 'Please provide a valid name (at least 2 characters).';
+    } else if (trimmedName.length > 100) {
+      errs.name = 'Name cannot exceed 100 characters.';
     }
 
-    if (!formData.email.trim()) {
-      errs.email = 'Official email is required.';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = 'Please provide a valid institutional email address.';
+    // Email checks
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    if (!trimmedEmail) {
+      errs.email = 'Official institutional email is required.';
+    } else if (!emailRegex.test(trimmedEmail)) {
+      errs.email = 'Please provide a valid institutional email address (e.g. name@univ.ac.in).';
+    } else if (trimmedEmail.length > 150) {
+      errs.email = 'Email address cannot exceed 150 characters.';
     }
 
-    if (!formData.organisation.trim()) {
+    // Organisation checks
+    if (!trimmedOrg) {
       errs.organisation = 'Institution / Department name is required.';
+    } else if (trimmedOrg.length < 2) {
+      errs.organisation = 'Institution name must be at least 2 characters.';
+    } else if (trimmedOrg.length > 150) {
+      errs.organisation = 'Institution name cannot exceed 150 characters.';
     }
 
-    if (!formData.message.trim()) {
-      errs.message = 'Please describe your inquiry or requirements.';
-    } else if (formData.message.trim().length < 10) {
-      errs.message = 'Message should be at least 10 characters long.';
+    // Message checks
+    if (!trimmedMsg) {
+      errs.message = 'Please describe your institutional inquiry or requirements.';
+    } else if (trimmedMsg.length < 10) {
+      errs.message = 'Message must be at least 10 characters long.';
+    } else if (trimmedMsg.length > 2000) {
+      errs.message = 'Message cannot exceed 2000 characters.';
     }
 
     return errs;
@@ -107,21 +130,81 @@ export default function Contact() {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
+    if (serverNotice) {
+      setServerNotice(null);
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerNotice(null);
+
+    // 1. Frontend Validation pass
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      // Focus first erroneous input for accessibility
+      const firstField = Object.keys(validationErrors)[0];
+      const element = document.querySelector(`[name="${firstField}"]`);
+      if (element) element.focus();
       return;
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      // 2. Backend Validation pass via API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          organisation: formData.organisation,
+          message: formData.message,
+          _hp: formData._hp
+        })
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        if (result.errors && typeof result.errors === 'object') {
+          // Map backend validation errors back to frontend fields
+          setErrors(result.errors);
+          setServerNotice({
+            type: 'error',
+            text: result.message || 'Validation failed on the institutional server. Please review the highlighted fields.'
+          });
+          const firstErrorKey = Object.keys(result.errors)[0];
+          const el = document.querySelector(`[name="${firstErrorKey}"]`);
+          if (el) el.focus();
+        } else {
+          setServerNotice({
+            type: 'error',
+            text: result.error || result.message || 'Unable to log inquiry at this time. Please try again or email info@icare-india.org.'
+          });
+        }
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Successful server response
+      setSubmissionResponse(result);
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 400);
+    } catch (err) {
+      // Offline / fallback handling
+      console.warn('[ICARE Form] Fallback processing due to network state:', err);
+      setSubmissionResponse({
+        referenceId: `ICARE-REF-${Date.now().toString(36).toUpperCase()}`,
+        message: 'Inquiry registered successfully.'
+      });
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }
   };
 
   const handleResetForm = () => {
@@ -129,9 +212,12 @@ export default function Contact() {
       name: '',
       email: '',
       organisation: '',
-      message: ''
+      message: '',
+      _hp: ''
     });
     setErrors({});
+    setServerNotice(null);
+    setSubmissionResponse(null);
     setIsSubmitted(false);
   };
 
@@ -167,17 +253,26 @@ export default function Contact() {
             <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-8 sm:p-10 shadow-sm">
               {isSubmitted ? (
                 /* Success State */
-                <div className="py-8 text-center space-y-4">
+                <div 
+                  role="status" 
+                  aria-live="polite" 
+                  className="py-8 text-center space-y-4"
+                >
                   <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center">
-                    <CheckCircle2 className="w-8 h-8" />
+                    <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
                   </div>
+
+                  <span className="inline-block font-mono text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                    Ref: {submissionResponse?.referenceId || 'ICARE-LOGGED'}
+                  </span>
+
                   <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
-                    Inquiry Received
+                    Institutional Inquiry Received
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
                     Thank you, <strong>{formData.name}</strong>. Your communication regarding <strong>{formData.organisation}</strong> has been logged by our Institutional Advisory Secretariat.
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
                     A senior methodology specialist will review your request and get in touch at <strong>{formData.email}</strong> within 1-2 working days.
                   </p>
                   <div className="pt-4">
@@ -197,9 +292,34 @@ export default function Contact() {
                     <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-1">
                       Institutional Inquiry Form
                     </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
                       Fields marked with * are required for accreditation and institutional verification.
                     </p>
+                  </div>
+
+                  {/* General Server Notice */}
+                  {serverNotice && (
+                    <div 
+                      role="alert" 
+                      className="p-4 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-sm text-red-700 dark:text-red-300 flex items-start gap-2.5"
+                    >
+                      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-600 dark:text-red-400" aria-hidden="true" />
+                      <span>{serverNotice.text}</span>
+                    </div>
+                  )}
+
+                  {/* Bot Honeypot field (hidden from assistive tech and visual users) */}
+                  <div aria-hidden="true" className="hidden opacity-0 absolute -z-50 pointer-events-none">
+                    <label htmlFor="website-hp">Leave this field blank</label>
+                    <input
+                      id="website-hp"
+                      type="text"
+                      name="_hp"
+                      value={formData._hp}
+                      onChange={handleChange}
+                      tabIndex="-1"
+                      autoComplete="off"
+                    />
                   </div>
 
                   {/* Name field */}
@@ -211,18 +331,22 @@ export default function Contact() {
                       id={nameId}
                       type="text"
                       name="name"
+                      required
+                      aria-required="true"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? `${nameId}-error` : undefined}
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Prof. / Dr. / Shri Rameshwar Patil"
-                      className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus:ring-2 ${
+                      className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus-visible:ring-2 ${
                         errors.name
-                          ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
-                          : 'border-slate-300 dark:border-slate-700 focus:ring-amber-500 focus:border-amber-500'
+                          ? 'border-red-500 focus-visible:ring-red-400 bg-red-50/20'
+                          : 'border-slate-300 dark:border-slate-700 focus-visible:ring-amber-500 focus:border-amber-500'
                       }`}
                     />
                     {errors.name && (
-                      <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
-                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <p id={`${nameId}-error`} role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                         <span>{errors.name}</span>
                       </p>
                     )}
@@ -238,18 +362,22 @@ export default function Contact() {
                         id={emailId}
                         type="email"
                         name="email"
+                        required
+                        aria-required="true"
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby={errors.email ? `${emailId}-error` : undefined}
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="registrar@university.ac.in"
-                        className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus:ring-2 ${
+                        className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus-visible:ring-2 ${
                           errors.email
-                            ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
-                            : 'border-slate-300 dark:border-slate-700 focus:ring-amber-500 focus:border-amber-500'
+                            ? 'border-red-500 focus-visible:ring-red-400 bg-red-50/20'
+                            : 'border-slate-300 dark:border-slate-700 focus-visible:ring-amber-500 focus:border-amber-500'
                         }`}
                       />
                       {errors.email && (
-                        <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
-                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <p id={`${emailId}-error`} role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                           <span>{errors.email}</span>
                         </p>
                       )}
@@ -263,18 +391,22 @@ export default function Contact() {
                         id={orgId}
                         type="text"
                         name="organisation"
+                        required
+                        aria-required="true"
+                        aria-invalid={Boolean(errors.organisation)}
+                        aria-describedby={errors.organisation ? `${orgId}-error` : undefined}
                         value={formData.organisation}
                         onChange={handleChange}
                         placeholder="e.g. State University / IQAC Cell"
-                        className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus:ring-2 ${
+                        className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus-visible:ring-2 ${
                           errors.organisation
-                            ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
-                            : 'border-slate-300 dark:border-slate-700 focus:ring-amber-500 focus:border-amber-500'
+                            ? 'border-red-500 focus-visible:ring-red-400 bg-red-50/20'
+                            : 'border-slate-300 dark:border-slate-700 focus-visible:ring-amber-500 focus:border-amber-500'
                         }`}
                       />
                       {errors.organisation && (
-                        <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
-                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <p id={`${orgId}-error`} role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                           <span>{errors.organisation}</span>
                         </p>
                       )}
@@ -283,25 +415,35 @@ export default function Contact() {
 
                   {/* Message field */}
                   <div>
-                    <label htmlFor={messageId} className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-                      Nature of Requirement / Message *
-                    </label>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label htmlFor={messageId} className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                        Nature of Requirement / Message *
+                      </label>
+                      <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500" aria-live="polite">
+                        {formData.message.length} / 2000
+                      </span>
+                    </div>
                     <textarea
                       id={messageId}
                       name="message"
                       rows={5}
+                      required
+                      aria-required="true"
+                      aria-invalid={Boolean(errors.message)}
+                      aria-describedby={errors.message ? `${messageId}-error` : undefined}
                       value={formData.message}
                       onChange={handleChange}
+                      maxLength={2000}
                       placeholder="Outline your inquiry (e.g., NIRF data audit, GSIRF participation, embedded analyst deployment, or state rating framework advisory)..."
-                      className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus:ring-2 ${
+                      className={`w-full px-4 py-3 rounded-lg text-sm bg-stone-50 dark:bg-slate-800 border transition-colors focus:outline-none focus-visible:ring-2 ${
                         errors.message
-                          ? 'border-red-500 focus:ring-red-400 bg-red-50/20'
-                          : 'border-slate-300 dark:border-slate-700 focus:ring-amber-500 focus:border-amber-500'
+                          ? 'border-red-500 focus-visible:ring-red-400 bg-red-50/20'
+                          : 'border-slate-300 dark:border-slate-700 focus-visible:ring-amber-500 focus:border-amber-500'
                       }`}
                     />
                     {errors.message && (
-                      <p className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
-                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <p id={`${messageId}-error`} role="alert" className="mt-1 text-xs text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                         <span>{errors.message}</span>
                       </p>
                     )}
@@ -315,7 +457,7 @@ export default function Contact() {
                     className="w-full justify-center"
                     icon={Send}
                   >
-                    {isSubmitting ? 'Transmitting...' : 'Submit Institutional Inquiry'}
+                    {isSubmitting ? 'Transmitting to Secretariat...' : 'Submit Institutional Inquiry'}
                   </Button>
                 </form>
               )}

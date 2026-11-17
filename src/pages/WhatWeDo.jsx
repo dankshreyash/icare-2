@@ -174,28 +174,28 @@ export default function WhatWeDo() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card className="p-6">
-            <div className="font-mono text-2xl font-bold text-amber-500 mb-2">01</div>
+            <div className="font-mono text-2xl font-bold text-amber-700 dark:text-amber-400 mb-2">01</div>
             <h4 className="font-serif text-lg font-bold text-slate-900 dark:text-white mb-2">Diagnostic Audit</h4>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Multi-year baseline audit across Scopus, Web of Science, NIRF submissions, student metrics, and financial records.
             </p>
           </Card>
           <Card className="p-6">
-            <div className="font-mono text-2xl font-bold text-amber-500 mb-2">02</div>
+            <div className="font-mono text-2xl font-bold text-amber-700 dark:text-amber-400 mb-2">02</div>
             <h4 className="font-serif text-lg font-bold text-slate-900 dark:text-white mb-2">Embedded Deployment</h4>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Dedicated on-campus analysts work inside IQAC and deaneries to cleanse data and rectify citation profiling errors.
             </p>
           </Card>
           <Card className="p-6">
-            <div className="font-mono text-2xl font-bold text-amber-500 mb-2">03</div>
+            <div className="font-mono text-2xl font-bold text-amber-700 dark:text-amber-400 mb-2">03</div>
             <h4 className="font-serif text-lg font-bold text-slate-900 dark:text-white mb-2">Targeted Intervention</h4>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Faculty publication masterclasses, patent filing acceleration, and international peer reputation campaigns.
             </p>
           </Card>
           <Card className="p-6">
-            <div className="font-mono text-2xl font-bold text-amber-500 mb-2">04</div>
+            <div className="font-mono text-2xl font-bold text-amber-700 dark:text-amber-400 mb-2">04</div>
             <h4 className="font-serif text-lg font-bold text-slate-900 dark:text-white mb-2">Capacity Handover</h4>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Self-sustaining internal dashboards, trained institutional coordinators, and enduring governance protocols.
