@@ -450,6 +450,8 @@ export const leadershipMembers = [
     name: "Dr. Kumara Swamy T.R.",
     role: "Senior Colleague & Policy Specialist",
     initials: "KS",
+    photoUrl: "/team/dr-kumara-swamy.jpg",
+    photoWebp: "/team/dr-kumara-swamy.webp",
     category: "Leadership",
     shortBio: "Worked very closely on the National Education Policy with the late Dr Kasturirangan, and presents ranking-data analysis for institutions.",
     fullBio: "Dr. Kumara Swamy T.R. is an ICARE colleague who has worked very closely on the National Education Policy with the late Dr Kasturirangan, and presents ranking-data analysis for institutions.",
@@ -626,6 +628,8 @@ export const embeddedAnalysts = [
       { 
         name: "Harsh Shetty", 
         role: "Data Analyst", 
+        photoUrl: "/team/harsh-shetty.jpg",
+        photoWebp: "/team/harsh-shetty.webp",
         focus: "Higher education analytics, institutional data analysis, analytical reporting, dashboard development, and ranking-related performance improvement." 
       }
     ]
