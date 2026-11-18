@@ -598,6 +598,8 @@ export const embeddedAnalysts = [
       { 
         name: "Vaibhav Ambekar", 
         role: "Data Analyst", 
+        photoUrl: "/team/vaibhav-ambekar.jpg",
+        photoWebp: "/team/vaibhav-ambekar.webp",
         focus: "Analysing institutional data, developing dashboards, KPI monitoring, process improvement, performance benchmarking, and technical implementation." 
       }
     ]
