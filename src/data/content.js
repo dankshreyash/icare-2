@@ -516,6 +516,8 @@ export const embeddedAnalysts = [
     universityShort: "BAMU",
     universityFull: "Dr. Babasaheb Ambedkar Marathwada University",
     location: "Chhatrapati Sambhajinagar",
+    logo: "/universities/BAMU.jpg",
+    logoWebp: "/universities/BAMU.webp",
     analysts: [
       { 
         name: "Atharav Paturkar", 
@@ -528,6 +530,8 @@ export const embeddedAnalysts = [
     universityShort: "RTMNU",
     universityFull: "Rashtrasant Tukadoji Maharaj Nagpur University",
     location: "Nagpur",
+    logo: "/universities/RTMNU.jpg",
+    logoWebp: "/universities/RTMNU.webp",
     analysts: [
       { 
         name: "Anjali Singh", 
@@ -540,6 +544,8 @@ export const embeddedAnalysts = [
     universityShort: "SGBAU",
     universityFull: "Sant Gadge Baba Amravati University",
     location: "Amravati",
+    logo: "/universities/SGBAU.jpg",
+    logoWebp: "/universities/SGBAU.webp",
     analysts: [
       { 
         name: "Prathamesh Babhulkar", 
@@ -552,6 +558,8 @@ export const embeddedAnalysts = [
     universityShort: "KBCNMU",
     universityFull: "Kavayitri Bahinabai Chaudhari North Maharashtra University",
     location: "Jalgaon",
+    logo: "/universities/KBCNMU.png",
+    logoWebp: "/universities/KBCNMU.webp",
     analysts: [
       { 
         name: "Nitish Kumbhar", 
@@ -564,6 +572,8 @@ export const embeddedAnalysts = [
     universityShort: "COEP",
     universityFull: "COEP Technological University, Pune",
     location: "Pune",
+    logo: "/universities/COEP.jpg",
+    logoWebp: "/universities/COEP.webp",
     analysts: [
       { 
         name: "Vaibhav Ambekar", 
@@ -576,6 +586,8 @@ export const embeddedAnalysts = [
     universityShort: "MU",
     universityFull: "Mumbai University",
     location: "Mumbai",
+    logo: "/universities/MU.jpg",
+    logoWebp: "/universities/MU.webp",
     analysts: [
       { 
         name: "Sneha Kashitkar", 
@@ -588,6 +600,8 @@ export const embeddedAnalysts = [
     universityShort: "SPPU",
     universityFull: "Savitribai Phule Pune University",
     location: "Pune",
+    logo: "/universities/SPPU.jpg",
+    logoWebp: "/universities/SPPU.webp",
     analysts: [
       { 
         name: "Harsh Shetty", 
@@ -597,6 +611,14 @@ export const embeddedAnalysts = [
     ]
   }
 ];
+
+export const maharashtraUniversities = embeddedAnalysts.map(u => ({
+  short: u.universityShort,
+  name: u.universityFull,
+  location: u.location,
+  logo: u.logo,
+  logoWebp: u.logoWebp
+}));
 
 export const technologyTeam = [
   {

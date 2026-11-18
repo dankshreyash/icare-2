@@ -7,7 +7,7 @@ import {
   Landmark, 
   GraduationCap 
 } from 'lucide-react';
-import { trackRecordData, siteMetadata } from '../data/content';
+import { trackRecordData, siteMetadata, maharashtraUniversities } from '../data/content';
 import Section from '../components/Section';
 import Card from '../components/Card';
 import Button from '../components/Button';
@@ -157,6 +157,42 @@ export default function TrackRecord() {
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                     {prog.description}
                   </p>
+
+                  {/* University Logo Strip for Maharashtra Mandate */}
+                  {prog.state === 'Maharashtra' && (
+                    <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 block mb-2.5">
+                        Participating State University Emblems:
+                      </span>
+                      <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+                        {maharashtraUniversities.map((univ) => (
+                          <div
+                            key={univ.short}
+                            title={`${univ.name} (${univ.location})`}
+                            className="p-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-amber-500 transition-colors flex flex-col items-center justify-center text-center shadow-2xs group"
+                          >
+                            <div className="w-8 h-8 rounded flex items-center justify-center overflow-hidden mb-1">
+                              <picture>
+                                <source type="image/webp" srcSet={univ.logoWebp} />
+                                <img
+                                  src={univ.logo}
+                                  alt={univ.short}
+                                  width="32"
+                                  height="32"
+                                  loading="lazy"
+                                  decoding="async"
+                                  className="w-full h-full object-contain"
+                                />
+                              </picture>
+                            </div>
+                            <span className="font-mono text-[9px] font-bold text-slate-700 dark:text-slate-300">
+                              {univ.short}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-xs font-mono text-amber-600 dark:text-amber-400">

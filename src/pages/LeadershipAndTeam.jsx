@@ -123,18 +123,33 @@ export default function LeadershipAndTeam() {
                 className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 shadow-xs flex flex-col justify-between hover:border-amber-400/50 transition-all duration-200"
               >
                 <div>
-                  {/* University Header with Location Badge */}
-                  <div className="flex items-start justify-between gap-2 pb-4 mb-4 border-b border-slate-100 dark:border-slate-800">
-                    <div>
-                      <div className="flex items-center gap-2">
+                  {/* University Header with Official Emblem and Location */}
+                  <div className="flex items-center gap-3.5 pb-4 mb-4 border-b border-slate-100 dark:border-slate-800">
+                    <div className="w-14 h-14 rounded-xl p-1 bg-white border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-center shrink-0 overflow-hidden group-hover:border-amber-400 transition-colors">
+                      <picture>
+                        <source type="image/webp" srcSet={group.logoWebp} />
+                        <img
+                          src={group.logo}
+                          alt={`${group.universityFull} official emblem`}
+                          width="56"
+                          height="56"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain"
+                        />
+                      </picture>
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 mb-1">
                         <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-900 text-amber-400 dark:bg-amber-500 dark:text-slate-950">
                           {group.universityShort}
                         </span>
-                        <span className="font-serif font-bold text-slate-900 dark:text-white text-base">
+                        <span className="font-serif font-bold text-slate-900 dark:text-white text-base truncate">
                           {group.universityShort}
                         </span>
                       </div>
-                      <h4 className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-1">
+                      <h4 className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-snug line-clamp-2" title={group.universityFull}>
                         {group.universityFull}
                       </h4>
                     </div>

@@ -16,7 +16,8 @@ import {
   heroStats, 
   whatWeAreKnownFor, 
   ourApproach, 
-  partnerLogos 
+  partnerLogos,
+  maharashtraUniversities
 } from '../data/content';
 import Section from '../components/Section';
 import SectionHeading from '../components/SectionHeading';
@@ -284,6 +285,34 @@ export default function Home() {
               <p className="font-serif font-semibold text-slate-900 dark:text-slate-100 text-sm sm:text-base leading-snug">
                 {partner.name}
               </p>
+
+              {partner.name.includes('Maharashtra') && (
+                <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {maharashtraUniversities.map((u) => (
+                      <div
+                        key={u.short}
+                        title={`${u.name} (${u.short})`}
+                        className="w-7 h-7 rounded-md p-0.5 bg-white border border-slate-200 dark:border-slate-700 shrink-0 flex items-center justify-center overflow-hidden"
+                      >
+                        <picture>
+                          <source type="image/webp" srcSet={u.logoWebp} />
+                          <img
+                            src={u.logo}
+                            alt={u.short}
+                            width="24"
+                            height="24"
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-contain"
+                          />
+                        </picture>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400 italic">
                 {partner.placeholderText}
               </div>
