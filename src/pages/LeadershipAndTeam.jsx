@@ -141,15 +141,10 @@ export default function LeadershipAndTeam() {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-900 text-amber-400 dark:bg-amber-500 dark:text-slate-950">
-                          {group.universityShort}
-                        </span>
-                        <span className="font-serif font-bold text-slate-900 dark:text-white text-base truncate">
-                          {group.universityShort}
-                        </span>
-                      </div>
-                      <h4 className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-snug line-clamp-2" title={group.universityFull}>
+                      <h3 className="font-serif font-bold text-slate-900 dark:text-white text-base truncate">
+                        {group.universityShort}
+                      </h3>
+                      <h4 className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-snug line-clamp-2 mt-0.5" title={group.universityFull}>
                         {group.universityFull}
                       </h4>
                     </div>
