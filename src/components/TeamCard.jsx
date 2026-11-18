@@ -6,6 +6,7 @@ export default function TeamCard({
   role,
   initials,
   photoUrl,
+  photoWebp,
   category,
   credentials,
   focus,
@@ -35,14 +36,29 @@ export default function TeamCard({
       <div className={`p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between ${className}`}>
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-serif text-sm font-bold border ${getInitialsBg(name)}`}>
-              {initials || name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-            </div>
+            {photoUrl ? (
+              <picture className="w-11 h-11 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
+                {photoWebp && <source type="image/webp" srcSet={photoWebp} />}
+                <img
+                  src={photoUrl}
+                  alt={`Portrait of ${name}`}
+                  width="44"
+                  height="44"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
+            ) : (
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-serif text-sm font-bold border ${getInitialsBg(name)}`}>
+                {initials || name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+              </div>
+            )}
             <div>
               <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
                 {name}
               </h4>
-              <p className="text-xs text-amber-600 dark:text-amber-400 font-medium">
+              <p className="text-xs text-amber-700 dark:text-amber-400 font-medium">
                 {role}
               </p>
             </div>
@@ -73,14 +89,29 @@ export default function TeamCard({
     return (
       <div className={`p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-amber-400/60 transition-all duration-200 ${className}`}>
         <div className="flex items-start gap-4">
-          <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-serif text-base font-bold border shrink-0 ${getInitialsBg(name)}`}>
-            {initials || name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-          </div>
+          {photoUrl ? (
+            <picture className="w-14 h-14 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
+              {photoWebp && <source type="image/webp" srcSet={photoWebp} />}
+              <img
+                src={photoUrl}
+                alt={`Portrait of ${name}`}
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </picture>
+          ) : (
+            <div className={`w-14 h-14 rounded-xl flex items-center justify-center font-serif text-base font-bold border shrink-0 ${getInitialsBg(name)}`}>
+              {initials || name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+            </div>
+          )}
           <div className="flex-1 min-w-0">
             <h4 className="font-semibold text-slate-900 dark:text-white text-base">
               {name}
             </h4>
-            <p className="text-xs font-medium text-amber-600 dark:text-amber-400 mt-0.5">
+            <p className="text-xs font-medium text-amber-700 dark:text-amber-400 mt-0.5">
               {role}
             </p>
             {focus && (
@@ -100,15 +131,18 @@ export default function TeamCard({
       <div>
         <div className="flex items-start justify-between gap-4 mb-5">
           {photoUrl ? (
-            <img
-              src={photoUrl}
-              alt={`Portrait of ${name}`}
-              width="64"
-              height="64"
-              loading="lazy"
-              decoding="async"
-              className="w-16 h-16 rounded-xl object-cover border border-slate-200 dark:border-slate-700"
-            />
+            <picture className="w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 shadow-xs">
+              {photoWebp && <source type="image/webp" srcSet={photoWebp} />}
+              <img
+                src={photoUrl}
+                alt={`Portrait of ${name}`}
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </picture>
           ) : (
             <div className={`w-16 h-16 rounded-xl flex items-center justify-center font-serif text-xl font-bold tracking-wider border shadow-xs ${getInitialsBg(name)}`}>
               {initials}

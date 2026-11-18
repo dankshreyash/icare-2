@@ -437,6 +437,8 @@ export const leadershipMembers = [
     name: "Dr. Karthick Sridhar",
     role: "Founding Leadership & Strategic Advisor",
     initials: "KS",
+    photoUrl: "/team/dr-karthick-sridhar.jpg",
+    photoWebp: "/team/dr-karthick-sridhar.webp",
     category: "Leadership",
     shortBio: "Originally responsible for bringing both QS and Times Higher Education to India, working closely with the Prime Minister when he was Chief Minister of Gujarat. Helped recommend and build NIRF. Advisor to IIT Madras.",
     fullBio: "Dr. Karthick Sridhar was originally responsible for bringing both QS and Times Higher Education to India, working closely with the Prime Minister when he was Chief Minister of Gujarat. Helped recommend and build NIRF. Advisor to IIT Madras. Works on Africa projects, including the Zanzibar campus.",
@@ -470,6 +472,8 @@ export const leadershipMembers = [
     name: "Saagar Teli",
     role: "Assistant Director of Data Science & Institutional Analytics",
     initials: "ST",
+    photoUrl: "/team/saagar-teli.jpg",
+    photoWebp: "/team/saagar-teli.webp",
     category: "Leadership",
     shortBio: "Leads advanced machine learning pipelines, predictive performance modeling, and automated data architectures for state-wide higher education initiatives.",
     fullBio: "Saagar Teli is an Assistant Director of Data Science & Institutional Analytics at ICARE, leading advanced machine learning pipelines, predictive performance modeling, and automated data architectures for state-wide higher education initiatives. Backed by an engineering foundation, enterprise experience at Tata Consultancy Services, and specialization in Artificial Intelligence and Data Science, he focuses on turning raw institutional datasets into actionable executive intelligence. At ICARE, he oversees data governance and analytical pipelines across participating public universities, designing automated dashboards and strategic scorecards that empower institutions to optimize ranking trajectories, track compliance indicators, and build scalable institutional capacity.",
@@ -481,6 +485,8 @@ export const leadershipMembers = [
     name: "Padma S. (Padmashree)",
     role: "Assistant Director of Programme Implementation",
     initials: "PS",
+    photoUrl: "/team/padmashree.jpg",
+    photoWebp: "/team/padmashree.webp",
     category: "Leadership",
     shortBio: "Drives executive project execution, stakeholder coordination, and institutional ranking alignment with over eight years of global rankings expertise at QS Quacquarelli Symonds.",
     fullBio: "Padma S. serves as Assistant Director of Programme Implementation at ICARE, driving executive project execution, stakeholder coordination, and institutional ranking alignment. With more than eight years of specialized expertise in global higher education rankings at QS Quacquarelli Symonds, she has led public ranking methodology reviews, global data validation pipelines, and complex stakeholder advisory support across World University, Regional, and Subject Rankings. Holding a Master’s degree from the University of Mumbai and possessing multilingual research proficiency, she combines deep knowledge of international academic benchmarking with on-ground operational rigor to streamline data governance and milestone delivery across ICARE’s key institutional frameworks.",
@@ -492,6 +498,8 @@ export const leadershipMembers = [
     name: "Sribhashyam Akhil",
     role: "Senior Data Analyst",
     initials: "SA",
+    photoUrl: "/team/sribhashyam-akhil.jpg",
+    photoWebp: "/team/sribhashyam-akhil.webp",
     category: "Analytics Leadership",
     shortBio: "Builds national-scale education analytics platforms for Indian higher education governance, using Power BI, Python, SQL, DAX, Figma and RAG and AI agent architectures.",
     fullBio: "Sribhashyam Akhil is a Senior Data Analyst at ICARE. Builds national-scale education analytics platforms for Indian higher education governance, using Power BI, Python, SQL, DAX, Figma and RAG and AI agent architectures.",
@@ -503,6 +511,8 @@ export const leadershipMembers = [
     name: "Kirti S.",
     role: "HR & Operations Administration Manager",
     initials: "KS",
+    photoUrl: "/team/kirti.jpg",
+    photoWebp: "/team/kirti.webp",
     category: "Operations & Audits",
     shortBio: "Manages Human Resources, operations administration, and desktop assessment frameworks, contributing to quality audits and projects including MahaSTRIDE under MITRA.",
     fullBio: "Kirti S. manages Human Resources, operations administration, and desktop assessment frameworks at ICARE, contributing to institutional quality audits and large-scale governance projects including MahaSTRIDE under MITRA. Bringing extensive cross-sector experience spanning banking operations, vendor management, and Management Information Systems (MIS)—including leadership roles as Deputy Manager at HDFC Bank—she ensures rigorous compliance, process standardization, and meticulous documentation.",
@@ -522,6 +532,8 @@ export const embeddedAnalysts = [
       { 
         name: "Atharav Paturkar", 
         role: "Data Analyst", 
+        photoUrl: "/team/atharav-paturkar.jpg",
+        photoWebp: "/team/atharav-paturkar.webp",
         focus: "Works in higher education analytics, institutional performance assessment, ranking assessments, dashboard development, benchmarking initiatives, and performance gap analysis." 
       }
     ]
@@ -536,6 +548,8 @@ export const embeddedAnalysts = [
       { 
         name: "Anjali Singh", 
         role: "Data Analyst", 
+        photoUrl: "/team/anjali-singh.jpg",
+        photoWebp: "/team/anjali-singh.webp",
         focus: "Focuses on higher education analytics, analysing institutional and ranking data, developing analytical dashboards, and supporting benchmarking initiatives to identify improvement opportunities." 
       }
     ]
@@ -550,6 +564,8 @@ export const embeddedAnalysts = [
       { 
         name: "Prathamesh Babhulkar", 
         role: "Data Analyst", 
+        photoUrl: "/team/prathamesh-babhulkar.jpg",
+        photoWebp: "/team/prathamesh-babhulkar.webp",
         focus: "Works under the MahaSTRIDE Initiative, coordinating data collection, NIRF analysis, ranking improvement, and Dashboard & Visualization Team (Python, SQL, Power BI, Flask)." 
       }
     ]
@@ -564,6 +580,8 @@ export const embeddedAnalysts = [
       { 
         name: "Nitish Kumbhar", 
         role: "Data Analyst", 
+        photoUrl: "/team/nitish-kumbhar.jpg",
+        photoWebp: "/team/nitish-kumbhar.webp",
         focus: "Higher education analytics, ranking assessments, analytical dashboards, and benchmarking initiatives, transforming complex datasets into actionable institutional insights." 
       }
     ]
@@ -592,6 +610,8 @@ export const embeddedAnalysts = [
       { 
         name: "Sneha Kashitkar", 
         role: "Data Analyst", 
+        photoUrl: "/team/sneha-kashitkar.jpg",
+        photoWebp: "/team/sneha-kashitkar.webp",
         focus: "Ranking data analysis, analytical reporting, dashboard development, and institutional benchmarking to identify performance gaps and improvement opportunities." 
       }
     ]
@@ -625,18 +645,24 @@ export const technologyTeam = [
     name: "Shreyash Gaikwad",
     role: "Full Stack AI Engineer",
     initials: "SG",
+    photoUrl: "/team/shreyash-gaikwad.jpg",
+    photoWebp: "/team/shreyash-gaikwad.webp",
     focus: "React.js, Node.js, SQL/NoSQL databases, Generative AI, RAG, LLMs, LangChain, vector databases (FAISS), embeddings, semantic search, prompt engineering, scalable AI-powered web applications and intelligent chatbots."
   },
   {
     name: "Sribhashyam Akhil",
     role: "Senior Data Analyst & Platform Architect",
     initials: "SA",
+    photoUrl: "/team/sribhashyam-akhil.jpg",
+    photoWebp: "/team/sribhashyam-akhil.webp",
     focus: "National-scale education analytics platforms, Power BI, Python, SQL, DAX, Figma, RAG and AI agent architectures for Indian higher education governance."
   },
   {
     name: "Saagar Teli",
     role: "Assistant Director of Data Science & Institutional Analytics",
     initials: "ST",
+    photoUrl: "/team/saagar-teli.jpg",
+    photoWebp: "/team/saagar-teli.webp",
     focus: "Advanced machine learning pipelines, predictive performance modeling, automated data architectures, and executive dashboards across participating public universities."
   }
 ];

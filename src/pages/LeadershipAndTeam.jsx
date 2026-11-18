@@ -97,6 +97,8 @@ export default function LeadershipAndTeam() {
               name={leader.name}
               role={leader.role}
               initials={leader.initials}
+              photoUrl={leader.photoUrl}
+              photoWebp={leader.photoWebp}
               category={leader.category}
               credentials={leader.credentials}
               focus={leader.focus}
@@ -160,22 +162,43 @@ export default function LeadershipAndTeam() {
                     {group.analysts.map((analyst, aIdx) => (
                       <div
                         key={aIdx}
-                        className="p-3 rounded-lg bg-stone-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800/60"
+                        className="p-3 rounded-lg bg-stone-50 dark:bg-slate-850 border border-slate-200/60 dark:border-slate-800/60 flex items-start gap-3"
                       >
-                        <div className="flex items-center justify-between">
-                          <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                            {analyst.name}
-                          </span>
-                          <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">
-                            Embedded
-                          </span>
+                        {analyst.photoUrl ? (
+                          <picture className="w-11 h-11 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs bg-white">
+                            {analyst.photoWebp && <source type="image/webp" srcSet={analyst.photoWebp} />}
+                            <img
+                              src={analyst.photoUrl}
+                              alt={`Portrait of ${analyst.name}`}
+                              width="44"
+                              height="44"
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-cover"
+                            />
+                          </picture>
+                        ) : (
+                          <div className="w-11 h-11 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-amber-50 dark:bg-slate-800 text-amber-800 dark:text-amber-300 font-serif font-bold text-xs flex items-center justify-center shrink-0">
+                            {analyst.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                          </div>
+                        )}
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white truncate">
+                              {analyst.name}
+                            </span>
+                            <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 shrink-0">
+                              Embedded
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-amber-700 dark:text-amber-400 font-medium mt-0.5">
+                            {analyst.role}
+                          </p>
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                            {analyst.focus}
+                          </p>
                         </div>
-                        <p className="text-[11px] text-amber-700 dark:text-amber-400 font-medium mt-0.5">
-                          {analyst.role}
-                        </p>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                          {analyst.focus}
-                        </p>
                       </div>
                     ))}
                   </div>
@@ -206,6 +229,8 @@ export default function LeadershipAndTeam() {
               name={member.name}
               role={member.role}
               initials={member.initials}
+              photoUrl={member.photoUrl}
+              photoWebp={member.photoWebp}
               focus={member.focus}
             />
           ))}
@@ -221,15 +246,33 @@ export default function LeadershipAndTeam() {
           subtitle={`${selectedLeader.role} • ${selectedLeader.credentials || ''}`}
         >
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-2 pb-2">
-              <span className="text-xs font-semibold px-2.5 py-1 rounded bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
-                {selectedLeader.category}
-              </span>
-              {selectedLeader.focus && (
-                <span className="text-xs text-slate-500 dark:text-slate-400">
-                  Domain: {selectedLeader.focus}
-                </span>
+            <div className="flex items-center gap-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+              {selectedLeader.photoUrl ? (
+                <picture className="w-16 h-16 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 shadow-xs">
+                  {selectedLeader.photoWebp && <source type="image/webp" srcSet={selectedLeader.photoWebp} />}
+                  <img
+                    src={selectedLeader.photoUrl}
+                    alt={`Portrait of ${selectedLeader.name}`}
+                    width="64"
+                    height="64"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
+              ) : (
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center font-serif text-xl font-bold tracking-wider border shadow-xs bg-slate-900 text-white dark:bg-amber-500 dark:text-slate-950 shrink-0">
+                  {selectedLeader.initials}
+                </div>
               )}
+              <div>
+                <span className="text-xs font-semibold px-2.5 py-1 rounded bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 inline-block mb-1">
+                  {selectedLeader.category}
+                </span>
+                {selectedLeader.focus && (
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Domain: {selectedLeader.focus}
+                  </p>
+                )}
+              </div>
             </div>
 
             <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
